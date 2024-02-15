@@ -4,24 +4,32 @@ from createNewFileFunction import createNewFile
 from readAveragesFunction import readAverages
 from updateFileFunction import updateFile
 from readFileFunction import readFile
+from graphFileFunction import graphFile
 
-filename = "Reading Files/numbers.txt"
+from os.path import exists
 
 print("Welcome to this weird numbers program!")
+filename = "Reading Files/" + input("What's the name of the file you'd like to open? ") + ".txt"
+
 while True:
+    if not exists(filename):
+        print("File doesnt exist, creating new file named " + filename + "...")
+        createNewFile(filename)
     print("What would you like to do?")
     print("[New] Create new file!")
     print("[A] Read the averages from " + filename)
     print("[B] Update the numbers in " + filename)
-    print("[C] Read all values from " + filename)
+    print("[C] Read " + filename + " file")
+    print("[D] Graph file " + filename)
     print("[Quit] Quit the program")
     
     decision = input("Select a function: ")
 
     if decision == "New" or decision == "new":
+        filename = "Reading Files/" + input("What's the name of the new file? ") + ".txt"
         result = createNewFile(filename)
         if result:
-            print("~~~~~~~~~~~~~~~~~~~~| File created successfully! |~~~~~~~~~~~~~~~~~~~~")
+            print("\n~~~~~~~~~~~~~~~~~~~~| File created successfully! |~~~~~~~~~~~~~~~~~~~~\n")
 
     elif decision == "A" or decision == "a":
         median, mean = readAverages(filename)
@@ -31,7 +39,7 @@ while True:
     elif decision == "B" or decision == "b":
         result = updateFile(filename)
         if result:
-            print("~~~~~~~~~~~~~~~~~~~~| File updated successfully! |~~~~~~~~~~~~~~~~~~~~")
+            print("\n~~~~~~~~~~~~~~~~~~~~| File updated successfully! |~~~~~~~~~~~~~~~~~~~~\n")
         else:
             print("~~~~~~~~~~~~~~~~~~~~| Error!", filename, "does not exist |~~~~~~~~~~~~~~~~~~~~")
         
@@ -41,6 +49,10 @@ while True:
         for line in result:
             print(line)
         print("~~~~~~~~~~~~~~~~~~~~| end of file |~~~~~~~~~~~~~~~~~~~~~~~\n")
+        
+    elif decision == "D" or decision == "d":
+        if graphFile(filename):
+            print("\n~~~~~~~~~~~~~~~~~~~~| file graphed successfully! |~~~~~~~~~~~~~~~~~~~~~~~\n")
         
     elif decision == "Quit" or decision == "quit":
         print("See ya later")

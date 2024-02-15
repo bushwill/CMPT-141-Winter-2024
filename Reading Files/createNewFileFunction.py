@@ -7,7 +7,7 @@ def createNewFile(filename):
     randomNumbersDict = {}
     randomNumbersList = []
     sum = 0
-    for i in range(50):
+    for i in range(51):
         number = r.randint(1, 100)
         randomNumbersList.append(number)
         if number in randomNumbersDict.keys():
