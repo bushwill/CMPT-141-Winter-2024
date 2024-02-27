@@ -1,3 +1,6 @@
+# This function reads the averages on line 2 of the file
+# Important to note it utilizes the readFile() function!
+
 from readFileFunction import readFile
 
 def readAverages(filename):

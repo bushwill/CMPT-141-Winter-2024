@@ -1,17 +1,25 @@
-# This program makes a file of 50 numbers, and at the beginning prints the mean and median averages.
+# This main.py script is the beginning point of the program; it is the "landing page" of the program
 
+# To run this Reading Files program, press run on this file!
+
+# All the below import statements import the functions from the other files and make them available in this function
 from createNewFileFunction import createNewFile
 from readAveragesFunction import readAverages
 from updateFileFunction import updateFile
 from readFileFunction import readFile
 from graphFileFunction import graphFile
 
+# This is a library present in the operating system (os) that detects if a filepath exists
 from os.path import exists
 
 print("Welcome to this weird numbers program!")
+
+# The "Reading Files/" addon is for if this program is located in a file named Reading Files
+# Change it accordingly!
 filename = "Reading Files/" + input("What's the name of the file you'd like to open? ") + ".txt"
 
 while True:
+    # If the file does not exist, it uses the createNewFile function to make it exist
     if not exists(filename):
         print("File doesnt exist, creating new file named " + filename + "...")
         createNewFile(filename)

@@ -1,3 +1,6 @@
+# This function graphs the file named filename
+# Important to note it utilizeds the readFile() function!
+
 import matplotlib.pyplot as plt
 from readFileFunction import readFile
 
